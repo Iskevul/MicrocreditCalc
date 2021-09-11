@@ -14,7 +14,7 @@ namespace MicrocreditCalc
     {
 
         public int sum;
-        public int days;
+        public int pdays;
         public string tariff;
         public double fullCost;
         public double overpayment;
@@ -27,6 +27,7 @@ namespace MicrocreditCalc
 
             choosedTariff.Items.Add("oneWeek");
             choosedTariff.Items.Add("oneMonth");
+            choosedTariff.Items.Add("free");
         }
 
         static double CountFullCost(int sum, int days, Dictionary<int, double> percents)
@@ -70,7 +71,7 @@ namespace MicrocreditCalc
         {
             sum = Convert.ToInt32(textBox1.Text);
             tariff = choosedTariff.Text;
-            days = Convert.ToInt32(chooseDays.Text);
+            pdays = Convert.ToInt32(chooseDays.Text);
 
             Tariff oneWeek = new Tariff(1000, 10000, 7);
             double plus = 0;
@@ -95,14 +96,30 @@ namespace MicrocreditCalc
                 {
                     oneMonth.percents.Add(i, 0.007);
                 }
-
             }
+
+            Tariff free = new Tariff(pdays);
+            if (pdays > 0)
+            {
+                plus = 0;
+                for (int i = 1; i < pdays; i++)
+                {
+                    plus += 0.05;
+                    if (plus > 1)
+                    {
+                        plus = 1;
+                    }
+                    free.percents.Add(i, plus);
+                }
+            }
+            
+           
 
             if (tariff == "oneWeek")
             {
-                days = 7;
-                fullCost = CountFullCost(sum, days, oneWeek.percents);
-                effectivePercentBet = overpayment / sum / days;
+                pdays = 7;
+                fullCost = CountFullCost(sum, pdays, oneWeek.percents);
+                effectivePercentBet = overpayment / sum / pdays;
                 overpayment = PercentSum(sum, fullCost);
                 
                 AmountToPay.Text = Convert.ToString(Math.Round(fullCost, 2));
@@ -115,10 +132,10 @@ namespace MicrocreditCalc
             }
             else if (tariff == "oneMonth")
             {
-                days = 30;
-                fullCost = CountFullCost(sum, days, oneMonth.percents);
+                pdays = 30;
+                fullCost = CountFullCost(sum, pdays, oneMonth.percents);
                 overpayment = PercentSum(sum, fullCost);
-                effectivePercentBet = overpayment / sum / days;
+                effectivePercentBet = overpayment / sum / pdays;
 
                 AmountToPay.Text = Convert.ToString(Math.Round(fullCost, 2));
                 Epb.Text = Convert.ToString(Math.Round(effectivePercentBet * 100, 2) + "%");
@@ -130,10 +147,10 @@ namespace MicrocreditCalc
             }
             else
             {
-                days = 7;
-                fullCost = CountFullCost(sum, days, oneWeek.percents);
+                pdays = 7;
+                fullCost = CountFullCost(sum, pdays, oneWeek.percents);
                 overpayment = PercentSum(sum, fullCost);
-                effectivePercentBet = overpayment / sum / days;
+                effectivePercentBet = overpayment / sum / pdays;
 
                 AmountToPay.Text = Convert.ToString(Math.Round(fullCost, 2));
                 Epb.Text = Convert.ToString(Math.Round(effectivePercentBet * 100, 2) + "%");
@@ -148,7 +165,7 @@ namespace MicrocreditCalc
         private void Refresh_Click(object sender, EventArgs e)
         {
             sum = 0;
-            days = 0;
+            pdays = 0;
             tariff = "";
             fullCost = 0;
             overpayment = 0;
@@ -171,5 +188,6 @@ namespace MicrocreditCalc
         public Dictionary<int, double> percents = new Dictionary<int, double>();
 
         public Tariff(int x, int y, int z) { minSum = x; maxSum = y; days = z; }
+        public Tariff(int z) { days = z; }
     }
 }
