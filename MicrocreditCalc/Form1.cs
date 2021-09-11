@@ -48,7 +48,7 @@ namespace MicrocreditCalc
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            sum = Convert.ToInt32(textBox1.Text);
+            
         }
 
         private void label8_Click(object sender, EventArgs e)
@@ -59,17 +59,19 @@ namespace MicrocreditCalc
         private void choosedTariff_SelectedIndexChanged(object sender, EventArgs e)
         {
             TariffName.Text = choosedTariff.Text;
-            tariff = choosedTariff.Text;
         }
 
         private void chooseDays_TextChanged(object sender, EventArgs e)
         {
             DueDay.Text = chooseDays.Text;
-            days = Convert.ToInt32(chooseDays.Text);
         }
 
         private void CountButton_Click(object sender, EventArgs e)
         {
+            sum = Convert.ToInt32(textBox1.Text);
+            tariff = choosedTariff.Text;
+            days = Convert.ToInt32(chooseDays.Text);
+
             Tariff oneWeek = new Tariff(1000, 10000, 7);
             double plus = 0;
             for (int i = 1; i <= 7; i++)
@@ -141,6 +143,22 @@ namespace MicrocreditCalc
                 //Console.WriteLine("Сумма процентов по долгу (переплата) = " + overpayment);
                 //Console.WriteLine("Эффективная процентная ставка в день = " + effectivePercentBet * 100 + "%");
             }
+        }
+
+        private void Refresh_Click(object sender, EventArgs e)
+        {
+            sum = 0;
+            days = 0;
+            tariff = "";
+            fullCost = 0;
+            overpayment = 0;
+            effectivePercentBet = 0;
+            AmountToPay.Text = null;
+            Epb.Text = null;
+            Overpay.Text = null;
+            choosedTariff.Text = "";
+            chooseDays.Text = "";
+            textBox1.Text = "";
         }
     }
 

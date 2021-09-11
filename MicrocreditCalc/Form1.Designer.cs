@@ -46,6 +46,7 @@ namespace MicrocreditCalc
             this.CountButton = new System.Windows.Forms.Button();
             this.Epb = new System.Windows.Forms.Label();
             this.Overpay = new System.Windows.Forms.Label();
+            this.Refresh = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // chooseDays
@@ -205,11 +206,22 @@ namespace MicrocreditCalc
             this.Overpay.Size = new System.Drawing.Size(0, 17);
             this.Overpay.TabIndex = 27;
             // 
+            // Refresh
+            // 
+            this.Refresh.Location = new System.Drawing.Point(277, 320);
+            this.Refresh.Name = "Refresh";
+            this.Refresh.Size = new System.Drawing.Size(146, 23);
+            this.Refresh.TabIndex = 28;
+            this.Refresh.Text = "Refresh";
+            this.Refresh.UseVisualStyleBackColor = true;
+            this.Refresh.Click += new System.EventHandler(this.Refresh_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(583, 416);
+            this.Controls.Add(this.Refresh);
             this.Controls.Add(this.Overpay);
             this.Controls.Add(this.Epb);
             this.Controls.Add(this.CountButton);
@@ -254,6 +266,7 @@ namespace MicrocreditCalc
         private System.Windows.Forms.Button CountButton;
         private System.Windows.Forms.Label Epb;
         private System.Windows.Forms.Label Overpay;
+        private System.Windows.Forms.Button Refresh;
     }
 }
 
