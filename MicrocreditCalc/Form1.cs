@@ -159,6 +159,7 @@ namespace MicrocreditCalc
             choosedTariff.Text = "";
             chooseDays.Text = "";
             textBox1.Text = "";
+            TariffName.Text = "";
         }
     }
 
