@@ -28,6 +28,38 @@ namespace MicrocreditCalc
             choosedTariff.Items.Add("oneWeek");
             choosedTariff.Items.Add("oneMonth");
             choosedTariff.Items.Add("free");
+
+            dataGridView1.AllowUserToAddRows = false;
+            //for (int i = 0; i < 5; ++i)
+            //{
+            //    //Добавляем строку, указывая значения каждой ячейки по имени (можно использовать индекс 0, 1, 2 вместо имен)
+            //    dataGridView1.Rows.Add();
+            //    dataGridView1["Day", dataGridView1.Rows.Count - 1].Value = "Пример 2, Товар " + i;
+            //    dataGridView1["Percent", dataGridView1.Rows.Count - 1].Value = i * 1000;
+            //    dataGridView1["Cumulatively", dataGridView1.Rows.Count - 1].Value = i;
+            //    dataGridView1["Summ", dataGridView1.Rows.Count - 1].Value = i;
+            //}
+
+        }
+
+        public void FillGrid(Tariff t)
+        {
+            double fullPerc = 0;
+            double daySum = 0;
+            double fullSum = 0;
+            for (int i = 1; i <= t.days; i++)
+            {
+                fullPerc += t.percents[i];
+                daySum += sum * t.percents[i];
+                fullSum = sum + daySum;
+        
+                dataGridView1.Rows.Add();
+                dataGridView1["Day", dataGridView1.Rows.Count - 1].Value = i;
+                dataGridView1["Percent", dataGridView1.Rows.Count - 1].Value = t.percents[i] + " %";
+                dataGridView1["Cumulatively", dataGridView1.Rows.Count - 1].Value = daySum;
+                dataGridView1["Summ", dataGridView1.Rows.Count - 1].Value = fullSum;
+        
+            }
         }
 
         static double CountFullCost(int sum, int days, Dictionary<int, double> percents)
@@ -35,7 +67,7 @@ namespace MicrocreditCalc
             double cost = sum;
             for (int i = 1; i <= days; i++)
             {
-                cost = cost + cost * percents[i];
+                cost += sum * percents[i];
             }
             //Console.WriteLine("Полная выплачиваемая сумма = " + cost);
             return cost;
@@ -69,6 +101,9 @@ namespace MicrocreditCalc
 
         private void CountButton_Click(object sender, EventArgs e)
         {
+            dataGridView1.Rows.Clear();
+            dataGridView1.Refresh();
+
             sum = Convert.ToInt32(textBox1.Text);
             tariff = choosedTariff.Text;
             pdays = Convert.ToInt32(chooseDays.Text);
@@ -78,7 +113,7 @@ namespace MicrocreditCalc
             for (int i = 1; i <= 7; i++)
             {
                 oneWeek.percents.Add(i, plus);
-                plus += 0.001;
+                plus += 0.02;
             }
 
             Tariff oneMonth = new Tariff(5000, 50000, 30);
@@ -102,7 +137,7 @@ namespace MicrocreditCalc
             if (pdays > 0)
             {
                 plus = 0;
-                for (int i = 1; i < pdays; i++)
+                for (int i = 1; i <= pdays; i++)
                 {
                     plus += 0.05;
                     if (plus > 1)
@@ -126,6 +161,9 @@ namespace MicrocreditCalc
                 Epb.Text = Convert.ToString(Math.Round(effectivePercentBet * 100, 2) + "%");
                 Overpay.Text = Convert.ToString(Math.Round(overpayment, 2));
 
+                FillGrid(oneWeek);
+
+
                 //Console.WriteLine("Полная выплачиваемая сумма = " + fullCost);
                 //Console.WriteLine("Сумма процентов по долгу (переплата) = " + overpayment);
                 //Console.WriteLine("Эффективная процентная ставка в день = " + effectivePercentBet * 100 + "%");
@@ -137,6 +175,8 @@ namespace MicrocreditCalc
                 overpayment = PercentSum(sum, fullCost);
                 effectivePercentBet = overpayment / sum / pdays;
 
+                FillGrid(oneMonth);
+
                 AmountToPay.Text = Convert.ToString(Math.Round(fullCost, 2));
                 Epb.Text = Convert.ToString(Math.Round(effectivePercentBet * 100, 2) + "%");
                 Overpay.Text = Convert.ToString(Math.Round(overpayment, 2));
@@ -145,13 +185,16 @@ namespace MicrocreditCalc
                 //Console.WriteLine("Сумма процентов по долгу (переплата) = " + overpayment);
                 //Console.WriteLine("Эффективная процентная ставка в день = " + effectivePercentBet * 100 + "%");
             }
-            else
+            else if (tariff == "free")
             {
-                pdays = 7;
-                fullCost = CountFullCost(sum, pdays, oneWeek.percents);
+                pdays = Convert.ToInt32(chooseDays.Text);
+                //pdays = 10;
+                fullCost = CountFullCost(sum, pdays, free.percents);
                 overpayment = PercentSum(sum, fullCost);
                 effectivePercentBet = overpayment / sum / pdays;
 
+                FillGrid(free);
+
                 AmountToPay.Text = Convert.ToString(Math.Round(fullCost, 2));
                 Epb.Text = Convert.ToString(Math.Round(effectivePercentBet * 100, 2) + "%");
                 Overpay.Text = Convert.ToString(Math.Round(overpayment, 2));
@@ -160,6 +203,8 @@ namespace MicrocreditCalc
                 //Console.WriteLine("Сумма процентов по долгу (переплата) = " + overpayment);
                 //Console.WriteLine("Эффективная процентная ставка в день = " + effectivePercentBet * 100 + "%");
             }
+
+
         }
 
         private void Refresh_Click(object sender, EventArgs e)
@@ -177,10 +222,13 @@ namespace MicrocreditCalc
             chooseDays.Text = "";
             textBox1.Text = "";
             TariffName.Text = "";
+            dataGridView1.Rows.Clear();
+            dataGridView1.Refresh();
         }
+
     }
 
-    class Tariff
+    public class Tariff
     {
         public int minSum;
         public int maxSum;
