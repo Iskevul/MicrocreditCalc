@@ -309,7 +309,7 @@ namespace MicrocreditCalc
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleGreen;
-            this.ClientSize = new System.Drawing.Size(1258, 385);
+            this.ClientSize = new System.Drawing.Size(1258, 399);
             this.Controls.Add(this.AddTariff);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.Refresh);
