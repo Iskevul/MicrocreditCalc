@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,29 +8,50 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 
 namespace MicrocreditCalc
 {
     public partial class Form1 : Form
     {
-
+        public string serialized;
         public int sum;
         public int pdays;
         public string tariff;
         public double fullCost;
         public double overpayment;
         public double effectivePercentBet;
+        public Tariff oneWeek  = new Tariff("oneWeek", 1000, 10000, 7);
+        public Tariff oneMonth = new Tariff("oneMonth", 5000, 50000, 30);
+        public TariffDeveloper fabric = new TariffDeveloper();
+        public List<Tariff> tariffBox = new List<Tariff>();
+        public List<Tariff> tars = new List<Tariff>();
 
-        
+        //public Tariffs
+
+
+
+
+
+
         public Form1()
         {
             InitializeComponent();
 
+            Tariff newT = fabric.CreateTariff("school", 1000, 20000, "month", 3, new double[] { 0.5, 0.7, 0.9 });
+
             choosedTariff.Items.Add("oneWeek");
             choosedTariff.Items.Add("oneMonth");
             choosedTariff.Items.Add("free");
+            choosedTariff.Items.Add(newT.name);
 
             dataGridView1.AllowUserToAddRows = false;
+            LoadData();
+
+            //tariffsBox.Tariffs = new Tariff[100];
 
         }
 
@@ -122,7 +144,6 @@ namespace MicrocreditCalc
 
             if (tariff == "oneWeek")
             {
-                Tariff oneWeek = new Tariff(1000, 10000, 7);
                 for (int i = 1; i <= 7; i++)
                 {
                     oneWeek.percents.Add(i, plus);
@@ -132,8 +153,9 @@ namespace MicrocreditCalc
                 pdays = 7;
                 DueDay.Text = "7";
                 fullCost = CountFullCost(sum, pdays, oneWeek.percents);
-                effectivePercentBet = overpayment / sum / pdays;
                 overpayment = PercentSum(sum, fullCost);
+                effectivePercentBet = overpayment / sum / pdays;
+                
                 
                 AmountToPay.Text = Convert.ToString(Math.Round(fullCost, 2));
                 Epb.Text = Convert.ToString(Math.Round(effectivePercentBet * 100, 2) + "%");
@@ -145,7 +167,6 @@ namespace MicrocreditCalc
             }
             else if (tariff == "oneMonth")
             {
-                Tariff oneMonth = new Tariff(5000, 50000, 30);
                 for (int i = 1; i <= 30; i++)
                 {
                     if (1 <= i && i <= 10)
@@ -178,7 +199,7 @@ namespace MicrocreditCalc
             }
             else if (tariff == "free")
             {
-                Tariff free = new Tariff(0, 500000, pdays);
+                Tariff free = new Tariff("free", 0, 500000, pdays);
                 if (pdays > 0)
                 {
                     plus = 0;
@@ -206,8 +227,93 @@ namespace MicrocreditCalc
 
                 Check(free, sum);
             }
+            else 
+            {
+                foreach (var tar in tars)
+                {
+                    if (tariff == tar.name)
+                    {
+                        OnTariff(tar);
+                    }
+                }
+            }
+        }
+        //Дописать
+        public void OnTariff(Tariff t)
+        {
+            fullCost = CountFullCost(sum, t.numberOfTimeUnits, t.percents);
+            overpayment = PercentSum(sum, fullCost);
+            effectivePercentBet = overpayment / sum / t.numberOfTimeUnits;
 
+            AmountToPay.Text = Convert.ToString(Math.Round(fullCost, 2));
+            Epb.Text = Convert.ToString(Math.Round(effectivePercentBet * 100, 2) + "%");
+            Overpay.Text = Convert.ToString(Math.Round(overpayment, 2));
 
+            FillGrid(t);
+            if (t.timeType == "day")
+            {
+                DueDay.Text = Convert.ToString(t.numberOfTimeUnits);
+                
+            }
+            else if (t.timeType == "week")
+            {
+                DueDay.Text = Convert.ToString(t.numberOfTimeUnits * 7);
+
+            }
+            else if (t.timeType == "month")
+            {
+                DueDay.Text = Convert.ToString(t.numberOfTimeUnits * 30);
+
+            }
+            //else if (t.timeType == "week")
+            //{
+            //    for (int i = 1; i <= t.numberOfTimeUnits; i++)
+            //    {
+            //        for (int j = 1; j <= 7; i++)
+            //        {
+            //            t.percents.Add(i, t.rate[i - 1]);
+            //        }
+            //    }
+            //
+            //    DueDay.Text = Convert.ToString(t.numberOfTimeUnits);
+            //    fullCost = CountFullCost(sum, t.numberOfTimeUnits, t.percents);
+            //    overpayment = PercentSum(sum, fullCost);
+            //    effectivePercentBet = overpayment / sum / t.numberOfTimeUnits;
+            //
+            //    AmountToPay.Text = Convert.ToString(Math.Round(fullCost, 2));
+            //    Epb.Text = Convert.ToString(Math.Round(effectivePercentBet * 100, 2) + "%");
+            //    Overpay.Text = Convert.ToString(Math.Round(overpayment, 2));
+            //
+            //    FillGrid(t);
+            //}
+        }
+
+        
+
+        public void SaveData(Tariff t)
+        {
+            tariffBox.Add(t);
+            choosedTariff.Items.Add(t.name);
+            serialized = JsonConvert.SerializeObject(tariffBox);
+            File.WriteAllText(@"C:\Users\User\source\repos\MicrocreditCalc\MicrocreditCalc\Resources\db1.json", string.Empty);
+
+            if (!File.Exists(@"C:\Users\User\source\repos\MicrocreditCalc\MicrocreditCalc\Resources\db1.json"))
+                File.Create(@"C:\Users\User\source\repos\MicrocreditCalc\MicrocreditCalc\Resources\db1.json").Close();
+            File.AppendAllText(@"C:\Users\User\source\repos\MicrocreditCalc\MicrocreditCalc\Resources\db1.json", serialized); 
+        }
+
+        public void LoadData()
+        {
+            var jsonString = File.ReadAllText(@"C:\Users\User\source\repos\MicrocreditCalc\MicrocreditCalc\Resources\db1.json");
+            tars = JsonConvert.DeserializeObject<List<Tariff>>(jsonString);
+            if (tars != null)
+            {
+                foreach (var tar in tars)
+                {
+                    tariffBox.Add(tar);
+                    choosedTariff.Items.Add(tar.name);
+                }
+            }  
         }
 
         public void Refr()
@@ -236,16 +342,104 @@ namespace MicrocreditCalc
             Refr();
         }
 
+        private void AddTariff_Click(object sender, EventArgs e)
+        {
+            Form2 frm = new Form2();
+            if (frm.ShowDialog(this) == DialogResult.OK)
+            {
+                IFormatProvider formatter = new NumberFormatInfo { NumberDecimalSeparator = "." };
+                string nameBox = frm.nameBox;
+                int minSumBox = Convert.ToInt32(frm.minSumBox);
+                int maxSumBox = Convert.ToInt32(frm.maxSumBox);
+                string timeTypeBox = frm.timeTypeBox;
+                int timeAmountBox = Convert.ToInt32(frm.timeAmountBox);
+                string[] rateBox = frm.rateBox.Split(' ');
+                double[] rateDouble = new double[rateBox.Length];
+                for (int i = 0; i < rateBox.Length; i++)
+                {
+                    rateDouble[i] = double.Parse(rateBox[i], formatter);
+                }
+                Tariff NewT = fabric.CreateTariff(nameBox, minSumBox, maxSumBox, timeTypeBox, timeAmountBox, rateDouble);
+                choosedTariff.Items.Add(nameBox);
+                SaveData(NewT);
+            }
+        }
+    }
+
+    public class Data
+    {
+        public Tariff[] Tariffs { get; set; }
     }
 
     public class Tariff
     {
-        public int minSum;
-        public int maxSum;
-        public int days;
-        public Dictionary<int, double> percents = new Dictionary<int, double>();
+        public string name { get; set; }
+        public int minSum { get; set; }
+        public int maxSum { get; set; }
+        public int days { get; set; }
+        public string timeType { get; set; }
+        public int numberOfTimeUnits { get; set; }
+        public double[] rate { get; set; }
 
-        public Tariff(int x, int y, int z) { minSum = x; maxSum = y; days = z; }
-        public Tariff(int z) { days = z; }
+        public Dictionary<int, double> percents { get; set; }
+
+        public Tariff(string name, int y) { this.name = name; days = y; percents = new Dictionary<int, double>(); }
+        public Tariff(string name, int x, int y, int z) { this.name = name; minSum = x; maxSum = y; days = z; percents = new Dictionary<int, double>(); }
+        [JsonConstructor]
+        public Tariff(string name, int minSum, int maxSum, string timeType, int numberOfTimeUnits, double[] rate)
+        {
+            this.name = name;
+            this.minSum = minSum;
+            this.maxSum = maxSum;
+            this.timeType = timeType;
+            this.numberOfTimeUnits = numberOfTimeUnits;
+            this.rate = rate;
+            percents = new Dictionary<int, double>();
+
+            int count = 0;
+
+            if (this.timeType == "day")
+            {
+                for (int i = 1; i <= this.numberOfTimeUnits; i++)
+                {
+                    this.percents.Add(i, this.rate[i - 1]);
+                }
+                this.days = this.numberOfTimeUnits;
+            }
+            else if (this.timeType == "week")
+            {
+                count = 0;
+                for (int i = 1; i <= this.numberOfTimeUnits; i++)
+                {
+                    for (int j = 1; j <= 7; j++)
+                    {
+                        count += 1;
+                        this.percents.Add(count, this.rate[i - 1]);
+                    }
+                }
+                this.days = this.numberOfTimeUnits * 7;
+            }
+            else if (this.timeType == "month")
+            {
+                count = 0;
+                for (int i = 1; i <= this.numberOfTimeUnits; i++)
+                {
+                    for (int j = 1; j <= 30; j++)
+                    {
+                        count += 1;
+                        this.percents.Add(count, this.rate[i - 1]);
+                    }
+                }
+                this.days = this.numberOfTimeUnits * 30;
+            }
+        }
+    }
+
+    public class TariffDeveloper
+    {
+        public Tariff CreateTariff(string name, int minSum, int maxSum, string timeType, int numberOfTimeUnits, double[] rate)
+        {
+            return new Tariff(name, minSum, maxSum, timeType, numberOfTimeUnits, rate);
+        }
     }
 }
