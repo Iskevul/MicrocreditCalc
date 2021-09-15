@@ -300,16 +300,16 @@ namespace MicrocreditCalc
             tariffBox.Add(t);
             choosedTariff.Items.Add(t.name);
             serialized = JsonConvert.SerializeObject(tariffBox);
-            File.WriteAllText(@"\Resources\db1.json", string.Empty);
+            File.WriteAllText(@"C:\Users\User\source\repos\MicrocreditCalc\MicrocreditCalc\Resources\db1.json", string.Empty);
 
-            if (!File.Exists(@"\Resources\db1.json"))
-                File.Create(@"\Resources\db1.json").Close();
-            File.AppendAllText(@"\Resources\db1.json", serialized); 
+            if (!File.Exists(@"C:\Users\User\source\repos\MicrocreditCalc\MicrocreditCalc\Resources\db1.json"))
+                File.Create(@"C:\Users\User\source\repos\MicrocreditCalc\MicrocreditCalc\Resources\db1.json").Close();
+            File.AppendAllText(@"C:\Users\User\source\repos\MicrocreditCalc\MicrocreditCalc\Resources\db1.json", serialized); 
         }
 
         public void LoadData()
         {
-            var jsonString = File.ReadAllText(@"\Resources\db1.json");
+            var jsonString = File.ReadAllText(@"C:\Users\User\source\repos\MicrocreditCalc\MicrocreditCalc\Resources\db1.json");
             tars = JsonConvert.DeserializeObject<List<Tariff>>(jsonString);
             if (tars != null)
             {
