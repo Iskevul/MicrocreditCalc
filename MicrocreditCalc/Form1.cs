@@ -47,23 +47,7 @@ namespace MicrocreditCalc
             choosedTariff.Items.Add("free");
 
             dataGridView1.AllowUserToAddRows = false;
-            //dataGridView2.AllowUserToAddRows = false;
             LoadData();
-
-            //foreach (var tar in tars)
-            //{
-            //    dataGridView2.Rows.Add();
-            //    dataGridView2["Nname", dataGridView1.Rows.Count].Value = tar.name;
-            //    dataGridView2["MinSum", dataGridView1.Rows.Count].Value = tar.minSum;
-            //    dataGridView2["MaxSum", dataGridView1.Rows.Count].Value = tar.maxSum;
-            //    dataGridView2["TimeType", dataGridView1.Rows.Count].Value = tar.timeType;
-            //    dataGridView2["TimeAmount", dataGridView1.Rows.Count].Value = tar.numberOfTimeUnits;
-            //    dataGridView2["Rate", dataGridView1.Rows.Count].Value = tar.rate;
-            //    MessageBox.Show(tar.name);
-            //}
-
-            //tariffsBox.Tariffs = new Tariff[100];
-
         }
 
         public void Check(Tariff t, int sum)
@@ -249,7 +233,6 @@ namespace MicrocreditCalc
                 }
             }
         }
-        //Дописать
         public void OnTariff(Tariff t)
         {
             
@@ -300,16 +283,16 @@ namespace MicrocreditCalc
             tariffBox.Add(t);
             choosedTariff.Items.Add(t.name);
             serialized = JsonConvert.SerializeObject(tariffBox);
-            File.WriteAllText(@"C:\Users\User\source\repos\MicrocreditCalc\MicrocreditCalc\Resources\db1.json", string.Empty);
+            File.WriteAllText(@"..\..\..\packages\db1.json", string.Empty);
 
-            if (!File.Exists(@"C:\Users\User\source\repos\MicrocreditCalc\MicrocreditCalc\Resources\db1.json"))
-                File.Create(@"C:\Users\User\source\repos\MicrocreditCalc\MicrocreditCalc\Resources\db1.json").Close();
-            File.AppendAllText(@"C:\Users\User\source\repos\MicrocreditCalc\MicrocreditCalc\Resources\db1.json", serialized); 
+            if (!File.Exists(@"..\..\..\packages\db1.json"))
+                File.Create(@"..\..\..\packages\db1.json").Close();
+            File.AppendAllText(@"..\..\..\packages\db1.json", serialized); 
         }
 
         public void LoadData()
         {
-            var jsonString = File.ReadAllText(@"C:\Users\User\source\repos\MicrocreditCalc\MicrocreditCalc\Resources\db1.json");
+            var jsonString = File.ReadAllText(@"..\..\..\packages\db1.json");
             tars = JsonConvert.DeserializeObject<List<Tariff>>(jsonString);
             if (tars != null)
             {
@@ -340,8 +323,6 @@ namespace MicrocreditCalc
             chooseDays.Enabled = true;
             dataGridView1.Rows.Clear();
             dataGridView1.Refresh();
-            //dataGridView2.Rows.Clear();
-            //dataGridView2.Refresh();
         }
 
         private void Refresh_Click(object sender, EventArgs e)
@@ -372,11 +353,6 @@ namespace MicrocreditCalc
                 LoadData();
             }
         }
-    }
-
-    public class Data
-    {
-        public Tariff[] Tariffs { get; set; }
     }
 
     public class Tariff
