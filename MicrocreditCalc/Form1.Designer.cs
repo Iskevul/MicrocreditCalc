@@ -52,7 +52,6 @@ namespace MicrocreditCalc
             this.Percent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cumulatively = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Summ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AddTariff = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -294,23 +293,12 @@ namespace MicrocreditCalc
             this.Summ.Name = "Summ";
             this.Summ.Width = 125;
             // 
-            // AddTariff
-            // 
-            this.AddTariff.Location = new System.Drawing.Point(63, 321);
-            this.AddTariff.Name = "AddTariff";
-            this.AddTariff.Size = new System.Drawing.Size(165, 23);
-            this.AddTariff.TabIndex = 30;
-            this.AddTariff.Text = "Add Tariff";
-            this.AddTariff.UseVisualStyleBackColor = true;
-            this.AddTariff.Click += new System.EventHandler(this.AddTariff_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleGreen;
             this.ClientSize = new System.Drawing.Size(1258, 399);
-            this.Controls.Add(this.AddTariff);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.Refresh);
             this.Controls.Add(this.Overpay);
@@ -364,7 +352,6 @@ namespace MicrocreditCalc
         private System.Windows.Forms.DataGridViewTextBoxColumn Percent;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cumulatively;
         private System.Windows.Forms.DataGridViewTextBoxColumn Summ;
-        private System.Windows.Forms.Button AddTariff;
     }
 }
 
