@@ -88,8 +88,8 @@ namespace MicrocreditCalc
             for (int i = 1; i <= t.days; i++)
             {
                 fullPerc += t.percents[i];
-                daySum = sum * t.percents[i] / 100;
-                fullSum += daySum;
+                daySum += sum * t.percents[i] / 100;
+                fullSum = sum + daySum;
         
                 dataGridView1.Rows.Add();
                 dataGridView1["Day", dataGridView1.Rows.Count - 1].Value = i;
@@ -158,7 +158,7 @@ namespace MicrocreditCalc
                 for (int i = 1; i <= 7; i++)
                 {
                     oneWeek.percents.Add(i, plus);
-                    plus += 0.02;
+                    plus += 0.15;
                 }
 
                 pdays = 7;
