@@ -84,12 +84,12 @@ namespace MicrocreditCalc
         {
             double fullPerc = 0;
             double daySum = 0;
-            double fullSum = 0;
+            double fullSum = sum;
             for (int i = 1; i <= t.days; i++)
             {
                 fullPerc += t.percents[i];
-                daySum += sum * t.percents[i];
-                fullSum = sum + daySum;
+                daySum = sum * t.percents[i] / 100;
+                fullSum += daySum;
         
                 dataGridView1.Rows.Add();
                 dataGridView1["Day", dataGridView1.Rows.Count - 1].Value = i;
@@ -105,7 +105,7 @@ namespace MicrocreditCalc
             double cost = sum;
             for (int i = 1; i <= days; i++)
             {
-                cost += sum * percents[i];
+                cost += sum * percents[i] / 100;
             }
             return cost;
         }
@@ -252,27 +252,42 @@ namespace MicrocreditCalc
         //Дописать
         public void OnTariff(Tariff t)
         {
-            fullCost = CountFullCost(sum, t.numberOfTimeUnits, t.percents);
-            overpayment = PercentSum(sum, fullCost);
-            effectivePercentBet = overpayment / sum / t.numberOfTimeUnits;
-
-            AmountToPay.Text = Convert.ToString(Math.Round(fullCost, 2));
-            Epb.Text = Convert.ToString(Math.Round(effectivePercentBet * 100, 2) + "%");
-            Overpay.Text = Convert.ToString(Math.Round(overpayment, 2));
+            
 
             FillGrid(t);
             if (t.timeType == "day")
             {
+                fullCost = CountFullCost(sum, t.numberOfTimeUnits, t.percents);
+                overpayment = PercentSum(sum, fullCost);
+                effectivePercentBet = overpayment / sum / t.numberOfTimeUnits;
+
+                AmountToPay.Text = Convert.ToString(Math.Round(fullCost, 2));
+                Epb.Text = Convert.ToString(Math.Round(effectivePercentBet * 100, 2) + "%");
+                Overpay.Text = Convert.ToString(Math.Round(overpayment, 2));
                 DueDay.Text = Convert.ToString(t.numberOfTimeUnits);
                 
             }
             else if (t.timeType == "week")
             {
+                fullCost = CountFullCost(sum, t.numberOfTimeUnits * 7, t.percents);
+                overpayment = PercentSum(sum, fullCost);
+                effectivePercentBet = overpayment / sum / t.numberOfTimeUnits;
+
+                AmountToPay.Text = Convert.ToString(Math.Round(fullCost, 2));
+                Epb.Text = Convert.ToString(Math.Round(effectivePercentBet * 100, 2) + "%");
+                Overpay.Text = Convert.ToString(Math.Round(overpayment, 2));
                 DueDay.Text = Convert.ToString(t.numberOfTimeUnits * 7);
 
             }
             else if (t.timeType == "month")
             {
+                fullCost = CountFullCost(sum, t.numberOfTimeUnits * 30, t.percents);
+                overpayment = PercentSum(sum, fullCost);
+                effectivePercentBet = overpayment / sum / t.numberOfTimeUnits;
+
+                AmountToPay.Text = Convert.ToString(Math.Round(fullCost, 2));
+                Epb.Text = Convert.ToString(Math.Round(effectivePercentBet * 100, 2) + "%");
+                Overpay.Text = Convert.ToString(Math.Round(overpayment, 2));
                 DueDay.Text = Convert.ToString(t.numberOfTimeUnits * 30);
 
             }
@@ -354,6 +369,7 @@ namespace MicrocreditCalc
                 Tariff NewT = fabric.CreateTariff(nameBox, minSumBox, maxSumBox, timeTypeBox, timeAmountBox, rateDouble);
                 choosedTariff.Items.Add(nameBox);
                 SaveData(NewT);
+                LoadData();
             }
         }
     }
