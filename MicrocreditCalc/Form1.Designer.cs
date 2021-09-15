@@ -58,125 +58,130 @@ namespace MicrocreditCalc
             // 
             // chooseDays
             // 
-            this.chooseDays.Location = new System.Drawing.Point(253, 94);
+            this.chooseDays.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chooseDays.Location = new System.Drawing.Point(233, 104);
             this.chooseDays.Margin = new System.Windows.Forms.Padding(2);
             this.chooseDays.Name = "chooseDays";
-            this.chooseDays.Size = new System.Drawing.Size(146, 22);
+            this.chooseDays.Size = new System.Drawing.Size(135, 22);
             this.chooseDays.TabIndex = 19;
             this.chooseDays.TextChanged += new System.EventHandler(this.chooseDays_TextChanged);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(253, 66);
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(233, 66);
             this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(146, 22);
+            this.textBox1.Size = new System.Drawing.Size(135, 22);
             this.textBox1.TabIndex = 18;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label7.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.label7.Location = new System.Drawing.Point(59, 286);
+            this.label7.Location = new System.Drawing.Point(54, 293);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(168, 20);
+            this.label7.Size = new System.Drawing.Size(135, 20);
             this.label7.TabIndex = 17;
-            this.label7.Text = "Overpayment amount";
+            this.label7.Text = "Сумма переплат";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label6.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.label6.Location = new System.Drawing.Point(59, 263);
+            this.label6.Location = new System.Drawing.Point(50, 273);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(169, 20);
+            this.label6.Size = new System.Drawing.Size(139, 20);
             this.label6.TabIndex = 16;
-            this.label6.Text = "Effective interest rate";
+            this.label6.Text = "Эфф. (%) ставка";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.label5.Location = new System.Drawing.Point(112, 243);
+            this.label5.Location = new System.Drawing.Point(60, 253);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(116, 20);
+            this.label5.Size = new System.Drawing.Size(129, 20);
             this.label5.TabIndex = 15;
-            this.label5.Text = "Amount to pay";
+            this.label5.Text = "Сумма к оплате";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.label4.Location = new System.Drawing.Point(180, 203);
+            this.label4.Location = new System.Drawing.Point(129, 211);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 20);
+            this.label4.Size = new System.Drawing.Size(60, 20);
             this.label4.TabIndex = 14;
-            this.label4.Text = "Tariff";
+            this.label4.Text = "Тариф";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.label3.Location = new System.Drawing.Point(157, 223);
+            this.label3.Location = new System.Drawing.Point(82, 231);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(71, 20);
+            this.label3.Size = new System.Drawing.Size(107, 20);
             this.label3.TabIndex = 13;
-            this.label3.Text = "Due day";
+            this.label3.Text = "Срок оплаты";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.label2.Location = new System.Drawing.Point(101, 96);
+            this.label2.Location = new System.Drawing.Point(22, 101);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(127, 20);
+            this.label2.Size = new System.Drawing.Size(167, 24);
             this.label2.TabIndex = 12;
-            this.label2.Text = "Number of days";
+            this.label2.Text = "Количество дней";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.label1.Location = new System.Drawing.Point(114, 66);
+            this.label1.Location = new System.Drawing.Point(22, 63);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 20);
+            this.label1.Size = new System.Drawing.Size(147, 24);
             this.label1.TabIndex = 11;
-            this.label1.Text = "Credit amount";
+            this.label1.Text = "Сумма кредита";
             // 
             // choosedTariff
             // 
+            this.choosedTariff.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.choosedTariff.FormattingEnabled = true;
-            this.choosedTariff.Location = new System.Drawing.Point(253, 37);
+            this.choosedTariff.Location = new System.Drawing.Point(233, 27);
+            this.choosedTariff.Margin = new System.Windows.Forms.Padding(2);
             this.choosedTariff.Name = "choosedTariff";
-            this.choosedTariff.Size = new System.Drawing.Size(146, 24);
+            this.choosedTariff.Size = new System.Drawing.Size(135, 24);
             this.choosedTariff.TabIndex = 20;
             this.choosedTariff.SelectedIndexChanged += new System.EventHandler(this.choosedTariff_SelectedIndexChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label8.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.label8.Location = new System.Drawing.Point(123, 41);
+            this.label8.Location = new System.Drawing.Point(21, 27);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(105, 20);
-            this.label8.TabIndex = 21;
-            this.label8.Text = "Choose tariff";
+            this.label8.Size = new System.Drawing.Size(180, 25);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "Выберите тариф";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // TariffName
@@ -184,9 +189,10 @@ namespace MicrocreditCalc
             this.TariffName.AutoSize = true;
             this.TariffName.BackColor = System.Drawing.Color.PaleGreen;
             this.TariffName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TariffName.Location = new System.Drawing.Point(250, 203);
+            this.TariffName.Location = new System.Drawing.Point(201, 211);
+            this.TariffName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TariffName.Name = "TariffName";
-            this.TariffName.Size = new System.Drawing.Size(0, 20);
+            this.TariffName.Size = new System.Drawing.Size(0, 17);
             this.TariffName.TabIndex = 22;
             // 
             // DueDay
@@ -194,9 +200,10 @@ namespace MicrocreditCalc
             this.DueDay.AutoSize = true;
             this.DueDay.BackColor = System.Drawing.Color.PaleGreen;
             this.DueDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DueDay.Location = new System.Drawing.Point(250, 223);
+            this.DueDay.Location = new System.Drawing.Point(201, 233);
+            this.DueDay.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.DueDay.Name = "DueDay";
-            this.DueDay.Size = new System.Drawing.Size(0, 20);
+            this.DueDay.Size = new System.Drawing.Size(0, 17);
             this.DueDay.TabIndex = 23;
             // 
             // AmountToPay
@@ -204,18 +211,21 @@ namespace MicrocreditCalc
             this.AmountToPay.AutoSize = true;
             this.AmountToPay.BackColor = System.Drawing.Color.PaleGreen;
             this.AmountToPay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AmountToPay.Location = new System.Drawing.Point(250, 243);
+            this.AmountToPay.Location = new System.Drawing.Point(201, 256);
+            this.AmountToPay.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.AmountToPay.Name = "AmountToPay";
-            this.AmountToPay.Size = new System.Drawing.Size(0, 20);
+            this.AmountToPay.Size = new System.Drawing.Size(0, 17);
             this.AmountToPay.TabIndex = 24;
             // 
             // CountButton
             // 
-            this.CountButton.Location = new System.Drawing.Point(253, 121);
+            this.CountButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CountButton.Location = new System.Drawing.Point(133, 146);
+            this.CountButton.Margin = new System.Windows.Forms.Padding(2);
             this.CountButton.Name = "CountButton";
-            this.CountButton.Size = new System.Drawing.Size(146, 23);
+            this.CountButton.Size = new System.Drawing.Size(166, 31);
             this.CountButton.TabIndex = 25;
-            this.CountButton.Text = "Count";
+            this.CountButton.Text = "Рассчитать";
             this.CountButton.UseVisualStyleBackColor = true;
             this.CountButton.Click += new System.EventHandler(this.CountButton_Click);
             // 
@@ -224,9 +234,10 @@ namespace MicrocreditCalc
             this.Epb.AutoSize = true;
             this.Epb.BackColor = System.Drawing.Color.PaleGreen;
             this.Epb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Epb.Location = new System.Drawing.Point(250, 263);
+            this.Epb.Location = new System.Drawing.Point(201, 276);
+            this.Epb.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Epb.Name = "Epb";
-            this.Epb.Size = new System.Drawing.Size(0, 20);
+            this.Epb.Size = new System.Drawing.Size(0, 17);
             this.Epb.TabIndex = 26;
             // 
             // Overpay
@@ -234,23 +245,27 @@ namespace MicrocreditCalc
             this.Overpay.AutoSize = true;
             this.Overpay.BackColor = System.Drawing.Color.PaleGreen;
             this.Overpay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Overpay.Location = new System.Drawing.Point(250, 286);
+            this.Overpay.Location = new System.Drawing.Point(201, 296);
+            this.Overpay.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Overpay.Name = "Overpay";
-            this.Overpay.Size = new System.Drawing.Size(0, 20);
+            this.Overpay.Size = new System.Drawing.Size(0, 17);
             this.Overpay.TabIndex = 27;
             // 
             // Refresh
             // 
-            this.Refresh.Location = new System.Drawing.Point(253, 322);
+            this.Refresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Refresh.Location = new System.Drawing.Point(285, 354);
+            this.Refresh.Margin = new System.Windows.Forms.Padding(2);
             this.Refresh.Name = "Refresh";
-            this.Refresh.Size = new System.Drawing.Size(146, 23);
+            this.Refresh.Size = new System.Drawing.Size(132, 33);
             this.Refresh.TabIndex = 28;
-            this.Refresh.Text = "Refresh";
+            this.Refresh.Text = "Обновить";
             this.Refresh.UseVisualStyleBackColor = true;
             this.Refresh.Click += new System.EventHandler(this.Refresh_Click);
             // 
             // dataGridView1
             // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.DarkOliveGreen;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -259,12 +274,14 @@ namespace MicrocreditCalc
             this.Cumulatively,
             this.Summ});
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.dataGridView1.Location = new System.Drawing.Point(450, 33);
+            this.dataGridView1.Location = new System.Drawing.Point(473, 27);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(796, 312);
+            this.dataGridView1.Size = new System.Drawing.Size(549, 281);
             this.dataGridView1.TabIndex = 29;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Day
             // 
@@ -296,9 +313,10 @@ namespace MicrocreditCalc
             // 
             // AddTariff
             // 
-            this.AddTariff.Location = new System.Drawing.Point(63, 321);
+            this.AddTariff.Location = new System.Drawing.Point(38, 361);
+            this.AddTariff.Margin = new System.Windows.Forms.Padding(2);
             this.AddTariff.Name = "AddTariff";
-            this.AddTariff.Size = new System.Drawing.Size(165, 23);
+            this.AddTariff.Size = new System.Drawing.Size(124, 19);
             this.AddTariff.TabIndex = 30;
             this.AddTariff.Text = "Add Tariff";
             this.AddTariff.UseVisualStyleBackColor = true;
@@ -306,10 +324,10 @@ namespace MicrocreditCalc
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleGreen;
-            this.ClientSize = new System.Drawing.Size(1258, 399);
+            this.ClientSize = new System.Drawing.Size(1043, 405);
             this.Controls.Add(this.AddTariff);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.Refresh);
