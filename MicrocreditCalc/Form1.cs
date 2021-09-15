@@ -375,7 +375,7 @@ namespace MicrocreditCalc
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            dataGridView1.RowHeadersVisible = false;
         }
 
         private void label3_Click(object sender, EventArgs e)
