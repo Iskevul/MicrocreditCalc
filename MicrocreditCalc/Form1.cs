@@ -377,6 +377,11 @@ namespace MicrocreditCalc
         {
 
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
     public class Data
