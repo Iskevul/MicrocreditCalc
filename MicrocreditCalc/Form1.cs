@@ -24,6 +24,7 @@ namespace MicrocreditCalc
         public double fullCost;
         public double overpayment;
         public double effectivePercentBet;
+        public DateTime date = DateTime.Now;
         public Tariff oneWeek  = new Tariff("oneWeek", 1000, 10000, 7);
         public Tariff oneMonth = new Tariff("oneMonth", 5000, 50000, 30);
         public TariffDeveloper fabric = new TariffDeveloper();
@@ -74,13 +75,16 @@ namespace MicrocreditCalc
                 fullPerc += t.percents[i];
                 daySum += sum * t.percents[i] / 100;
                 fullSum = sum + daySum;
-        
+                
+
                 dataGridView1.Rows.Add();
-                dataGridView1["Day", dataGridView1.Rows.Count - 1].Value = i;
+                dataGridView1["Number", dataGridView1.Rows.Count - 1].Value = i;
+                dataGridView1["Day", dataGridView1.Rows.Count - 1].Value = date.ToShortDateString();
                 dataGridView1["Percent", dataGridView1.Rows.Count - 1].Value = t.percents[i] + " %";
                 dataGridView1["Cumulatively", dataGridView1.Rows.Count - 1].Value = daySum;
                 dataGridView1["Summ", dataGridView1.Rows.Count - 1].Value = fullSum;
-        
+
+                date = date.AddDays(1);
             }
         }
 
@@ -352,6 +356,11 @@ namespace MicrocreditCalc
                 SaveData(NewT);
                 LoadData();
             }
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            date = dateTimePicker1.Value;
         }
     }
 

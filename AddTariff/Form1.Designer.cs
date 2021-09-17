@@ -54,6 +54,7 @@ namespace AddTariff
             this.Cancel.TabIndex = 27;
             this.Cancel.Text = "Cancel";
             this.Cancel.UseVisualStyleBackColor = true;
+            this.Cancel.Click += new System.EventHandler(this.Cancel_Click);
             // 
             // TRate
             // 

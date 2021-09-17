@@ -48,6 +48,9 @@ namespace MicrocreditCalc
             this.Overpay = new System.Windows.Forms.Label();
             this.Refresh = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label9 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Day = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Percent = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cumulatively = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,7 +81,7 @@ namespace MicrocreditCalc
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label7.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.label7.Location = new System.Drawing.Point(59, 286);
+            this.label7.Location = new System.Drawing.Point(59, 321);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(168, 20);
@@ -90,7 +93,7 @@ namespace MicrocreditCalc
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label6.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.label6.Location = new System.Drawing.Point(59, 263);
+            this.label6.Location = new System.Drawing.Point(59, 298);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(169, 20);
@@ -102,7 +105,7 @@ namespace MicrocreditCalc
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label5.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.label5.Location = new System.Drawing.Point(112, 243);
+            this.label5.Location = new System.Drawing.Point(112, 278);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(116, 20);
@@ -114,7 +117,7 @@ namespace MicrocreditCalc
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.label4.Location = new System.Drawing.Point(180, 203);
+            this.label4.Location = new System.Drawing.Point(180, 238);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 20);
@@ -126,7 +129,7 @@ namespace MicrocreditCalc
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.ForeColor = System.Drawing.Color.DarkGoldenrod;
-            this.label3.Location = new System.Drawing.Point(157, 223);
+            this.label3.Location = new System.Drawing.Point(157, 258);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 20);
@@ -183,7 +186,7 @@ namespace MicrocreditCalc
             this.TariffName.AutoSize = true;
             this.TariffName.BackColor = System.Drawing.Color.PaleGreen;
             this.TariffName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.TariffName.Location = new System.Drawing.Point(250, 203);
+            this.TariffName.Location = new System.Drawing.Point(250, 238);
             this.TariffName.Name = "TariffName";
             this.TariffName.Size = new System.Drawing.Size(0, 20);
             this.TariffName.TabIndex = 22;
@@ -193,7 +196,7 @@ namespace MicrocreditCalc
             this.DueDay.AutoSize = true;
             this.DueDay.BackColor = System.Drawing.Color.PaleGreen;
             this.DueDay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DueDay.Location = new System.Drawing.Point(250, 223);
+            this.DueDay.Location = new System.Drawing.Point(250, 258);
             this.DueDay.Name = "DueDay";
             this.DueDay.Size = new System.Drawing.Size(0, 20);
             this.DueDay.TabIndex = 23;
@@ -203,14 +206,14 @@ namespace MicrocreditCalc
             this.AmountToPay.AutoSize = true;
             this.AmountToPay.BackColor = System.Drawing.Color.PaleGreen;
             this.AmountToPay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AmountToPay.Location = new System.Drawing.Point(250, 243);
+            this.AmountToPay.Location = new System.Drawing.Point(250, 278);
             this.AmountToPay.Name = "AmountToPay";
             this.AmountToPay.Size = new System.Drawing.Size(0, 20);
             this.AmountToPay.TabIndex = 24;
             // 
             // CountButton
             // 
-            this.CountButton.Location = new System.Drawing.Point(253, 121);
+            this.CountButton.Location = new System.Drawing.Point(253, 149);
             this.CountButton.Name = "CountButton";
             this.CountButton.Size = new System.Drawing.Size(146, 23);
             this.CountButton.TabIndex = 25;
@@ -223,7 +226,7 @@ namespace MicrocreditCalc
             this.Epb.AutoSize = true;
             this.Epb.BackColor = System.Drawing.Color.PaleGreen;
             this.Epb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Epb.Location = new System.Drawing.Point(250, 263);
+            this.Epb.Location = new System.Drawing.Point(250, 298);
             this.Epb.Name = "Epb";
             this.Epb.Size = new System.Drawing.Size(0, 20);
             this.Epb.TabIndex = 26;
@@ -233,14 +236,14 @@ namespace MicrocreditCalc
             this.Overpay.AutoSize = true;
             this.Overpay.BackColor = System.Drawing.Color.PaleGreen;
             this.Overpay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Overpay.Location = new System.Drawing.Point(250, 286);
+            this.Overpay.Location = new System.Drawing.Point(250, 321);
             this.Overpay.Name = "Overpay";
             this.Overpay.Size = new System.Drawing.Size(0, 20);
             this.Overpay.TabIndex = 27;
             // 
             // Refresh
             // 
-            this.Refresh.Location = new System.Drawing.Point(253, 322);
+            this.Refresh.Location = new System.Drawing.Point(253, 357);
             this.Refresh.Name = "Refresh";
             this.Refresh.Size = new System.Drawing.Size(146, 23);
             this.Refresh.TabIndex = 28;
@@ -253,6 +256,7 @@ namespace MicrocreditCalc
             this.dataGridView1.BackgroundColor = System.Drawing.Color.DarkOliveGreen;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Number,
             this.Day,
             this.Percent,
             this.Cumulatively,
@@ -264,6 +268,32 @@ namespace MicrocreditCalc
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(796, 312);
             this.dataGridView1.TabIndex = 29;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.ForeColor = System.Drawing.Color.DarkGoldenrod;
+            this.label9.Location = new System.Drawing.Point(183, 123);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(45, 20);
+            this.label9.TabIndex = 30;
+            this.label9.Text = "Date";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(253, 121);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(146, 22);
+            this.dateTimePicker1.TabIndex = 31;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // Number
+            // 
+            this.Number.HeaderText = "Number";
+            this.Number.MinimumWidth = 6;
+            this.Number.Name = "Number";
+            this.Number.Width = 125;
             // 
             // Day
             // 
@@ -299,6 +329,8 @@ namespace MicrocreditCalc
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleGreen;
             this.ClientSize = new System.Drawing.Size(1258, 399);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.Refresh);
             this.Controls.Add(this.Overpay);
@@ -348,6 +380,9 @@ namespace MicrocreditCalc
         private System.Windows.Forms.Label Overpay;
         private System.Windows.Forms.Button Refresh;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Number;
         private System.Windows.Forms.DataGridViewTextBoxColumn Day;
         private System.Windows.Forms.DataGridViewTextBoxColumn Percent;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cumulatively;

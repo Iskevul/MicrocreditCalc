@@ -44,7 +44,22 @@ namespace AddTariff
             Tariff NewT = fabric.CreateTariff(nameBox, minSumBox, maxSumBox, timeTypeBox, timeAmountBox, rateDouble);
             //choosedTariff.Items.Add(nameBox);
             SaveData(NewT);
-            Close();
+            Refr();
+        }
+
+        private void Cancel_Click(object sender, EventArgs e)
+        {
+            Refr();
+        }
+
+        public void Refr()
+        {
+            TName.Text = "";
+            TMinSum.Text = "";
+            TMaxSum.Text = "";
+            TTimeType.Text = "";
+            TTimeAmount.Text = "";
+            TRate.Text = "";
         }
 
         public void SaveData(Tariff t)
@@ -91,6 +106,7 @@ namespace AddTariff
 
             public Tariff(string name, int y) { this.name = name; days = y; percents = new Dictionary<int, double>(); }
             public Tariff(string name, int x, int y, int z) { this.name = name; minSum = x; maxSum = y; days = z; percents = new Dictionary<int, double>(); }
+
             [JsonConstructor]
             public Tariff(string name, int minSum, int maxSum, string timeType, int numberOfTimeUnits, double[] rate)
             {
