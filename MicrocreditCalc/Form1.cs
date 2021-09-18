@@ -170,15 +170,15 @@ namespace MicrocreditCalc
                 {
                     if (1 <= i && i <= 10)
                     {
-                        oneMonth.percents.Add(i, 0.005);
+                        oneMonth.percents.Add(i, 0.5);
                     }
                     if (11 <= i && i <= 20)
                     {
-                        oneMonth.percents.Add(i, 0.006);
+                        oneMonth.percents.Add(i, 0.6);
                     }
                     if (21 <= i && i <= 30)
                     {
-                        oneMonth.percents.Add(i, 0.007);
+                        oneMonth.percents.Add(i, 0.7);
                     }
                 }
 
@@ -361,6 +361,31 @@ namespace MicrocreditCalc
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             date = dateTimePicker1.Value;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TariffName_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
